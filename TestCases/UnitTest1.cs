@@ -27,8 +27,7 @@ namespace TestCases
             testResults = new TestCaseResultDto();
             _weatherForecastController = new WeatherForecastController(_logger);
             project = new NewProject();
-            var directoryPath = Directory.GetCurrentDirectory();
-            customValue = System.IO.File.ReadAllText(directoryPath + "\\custom.ih");
+            customValue = System.IO.File.ReadAllText(@"C:\ProofofConcept\WebApplication\custom.ih");
             testResults.CustomData = customValue;
         }
 
