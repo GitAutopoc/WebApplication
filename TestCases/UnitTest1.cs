@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebApplication.Controllers;
 
-namespace NUnitTestProject
+namespace TestCases
 {
     public class Tests
     {
@@ -132,7 +132,7 @@ namespace NUnitTestProject
         {
             using (HttpClient _httpClient = new HttpClient())
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, "https://azurepostendpoint/function")
+                var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:7071/api/TestCaseResultsEnqueue")
                 {
                     Content = new FormUrlEncodedContent(new Dictionary<string, string>
                     {

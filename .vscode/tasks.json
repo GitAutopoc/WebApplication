@@ -4,12 +4,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "test",
+            "label": "execute",
             "command": "dotnet",
             "type": "shell",
             "args": [
                 "test",
-                "${workspaceFolder}\\NUnitTestProject\\bin\\Debug\\netcoreapp3.1\\NUnitTestProject.dll"
+                "${cwd}\\test\\TestProject_DotNet.dll"
             ],
             "presentation": {
                 "echo": true,
@@ -18,18 +18,15 @@
                 "panel": "shared",
                 "showReuseMessage": true,
                 "clear": false
-            }
+            },
+            "dependsOn": ["push"]
         },
         {
             "label": "build",
             "command": "dotnet",
             "type": "shell",
             "args": [
-                "build",
-                // Ask dotnet build to generate full paths for file names.
-                "/property:GenerateFullPaths=true",
-                // Do not generate summary otherwise it leads to duplicate errors in Problems panel
-                "/consoleloggerparameters:NoSummary"
+                "build"
             ],
             "group": "build",
             // "presentation": {
@@ -37,6 +34,47 @@
             // },
             "problemMatcher": "$msCompile",
             "dependsOn": ["test"]
+        },
+        {
+            "label": "commit",
+            "command": "git commit -m autocommit",
+            "type": "shell",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "dependsOn": ["stage"]
+        },
+        {
+            "label": "stage",
+            "command": "git add --all",
+            "type": "shell",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+        },
+        {
+            "label": "push",
+            "command": "git push",
+            "type": "shell",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "dependsOn": ["commit"] 
         }
     ]
 }

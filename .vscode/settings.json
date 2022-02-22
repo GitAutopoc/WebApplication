@@ -1,5 +1,19 @@
 {
     "files.exclude": {
-        "NUnitTestProject": true
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        // "TestCases/**": true
+    },
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": "NUnitTestProject\\\\.*$",
+                "cmd": "start ${workspaceFolder}\\Messager\\MessagerApp.exe ${workspaceFolder}"
+            }
+        ]
     }
 }
