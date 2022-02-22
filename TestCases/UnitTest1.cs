@@ -39,7 +39,7 @@ namespace TestCases
                 int a = 10, b = 20;
                 var result = _weatherForecastController.CalculateTotal(a, b);
                 Assert.AreEqual(result, 30);
-                testResults.Results.Add(new TestCases
+                testResults.EvaluationResultJson.Add(new TestCases
                 {
                     MethodName = "test1",
                     MethodType = "functional",
@@ -51,7 +51,7 @@ namespace TestCases
             }
             catch (Exception ex) 
             {
-                testResults.Results.Add(new TestCases
+                testResults.EvaluationResultJson.Add(new TestCases
                 {
                     MethodName = "test1",
                     MethodType = "functional",
@@ -71,7 +71,7 @@ namespace TestCases
                 int a = -2, b = -2;
                 var result = _weatherForecastController.CalculateTotal(a, b);
                 Assert.AreEqual(result, 50);
-                testResults.Results.Add(new TestCases
+                testResults.EvaluationResultJson.Add(new TestCases
                 {
                     MethodName = "test1",
                     MethodType = "functional",
@@ -83,7 +83,7 @@ namespace TestCases
             }
             catch (Exception ex)
             {
-                testResults.Results.Add(new TestCases
+                testResults.EvaluationResultJson.Add(new TestCases
                 {
                     MethodName = "test1",
                     MethodType = "functional",
@@ -102,7 +102,7 @@ namespace TestCases
                 string a = "Hello ", b = "there";
                 var result = project.ConcatString(a, b);
                 Assert.Equals(result, "Hello there");
-                testResults.Results.Add(new TestCases
+                testResults.EvaluationResultJson.Add(new TestCases
                 {
                     MethodName = "test1",
                     MethodType = "functional",
@@ -114,7 +114,7 @@ namespace TestCases
             }
             catch (Exception ex)
             {
-                testResults.Results.Add(new TestCases
+                testResults.EvaluationResultJson.Add(new TestCases
                 {
                     MethodName = "test1",
                     MethodType = "functional",
