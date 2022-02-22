@@ -131,14 +131,8 @@ namespace TestCases
         {
             using (HttpClient _httpClient = new HttpClient())
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost:7071/api/TestCaseResultsEnqueue")
-                {
-                    Content = new FormUrlEncodedContent(new Dictionary<string, string>
-                    {
-                        ["receivedMessage"] = JsonConvert.SerializeObject(testResults).ToString()
-                    })
-                };
-                await _httpClient.SendAsync(request);
+                var testResultsJson = JsonConvert.SerializeObject(testResults);
+                await _httpClient.PostAsync("http://localhost:7071/api/TestCaseResultsEnqueue", testResultsJson);
             }
         }
     }

@@ -6,7 +6,7 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "TestCases/**": true
+        // "TestCases/**": true
     },
     "emeraldwalk.runonsave": {
         "commands": [
