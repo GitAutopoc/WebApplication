@@ -9,7 +9,7 @@
             "type": "shell",
             "args": [
                 "test",
-                "${cwd}\\test\\TestProject_DotNet.dll"
+                "${cwd}\\TestCases"
             ],
             "presentation": {
                 "echo": true,
