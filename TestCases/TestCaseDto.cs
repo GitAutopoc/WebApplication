@@ -8,10 +8,10 @@ namespace TestCases
     {
         public TestCaseResultDto() 
         {
-            Results = new List<TestCases>();
+            EvaluationResultJson = new List<TestCases>();
         }
         public string CustomData { get; set; }
-        public List<TestCases> Results { get; set; }
+        public List<TestCases> EvaluationResultJson { get; set; }
     }
 
     public class TestCases 
