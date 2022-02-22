@@ -22,5 +22,6 @@ namespace TestCases
         public int EarnedScore { get; set; }
         public string Status { get; set; }
         public bool IsMandatory { get; set; }
+        public string ErroMessage{ get; set; }
     }
 }
