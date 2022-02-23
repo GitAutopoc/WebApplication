@@ -21,7 +21,7 @@ namespace TestCases
         private NewProject project;
         public string customValue;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             testResults = new TestCaseResultDto();
