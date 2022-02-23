@@ -75,7 +75,7 @@ namespace TestCases
                 {
                     MethodName = "test1",
                     MethodType = "functional",
-                    ActualScore = 0,
+                    ActualScore = 5,
                     EarnedScore = 5,
                     Status = "Failed",
                     IsMandatory = true
@@ -88,6 +88,7 @@ namespace TestCases
                     MethodName = "test1",
                     MethodType = "functional",
                     ActualScore = 5,
+                    EarnedScore = 0,
                     Status = "Passed",
                     IsMandatory = true
                 });
