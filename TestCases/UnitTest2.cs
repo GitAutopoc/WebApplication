@@ -1,4 +1,4 @@
-using ClassLibraryProject;
+﻿using ClassLibraryProject;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -12,7 +12,7 @@ using WebApplication.Controllers;
 
 namespace TestCases
 {
-    public class Tests
+    public class Test2
     {
         public TestResults testResults;
         private WeatherForecastController _weatherForecastController;
@@ -62,7 +62,7 @@ namespace TestCases
                     IsMandatory = true
                 });
             }
-            finally 
+            finally
             {
                 SendTestCaseResults(testResults);
             }
@@ -105,7 +105,7 @@ namespace TestCases
         }
 
         [Test]
-        public void testFunction3() 
+        public void testFunction3()
         {
             try
             {
@@ -140,7 +140,7 @@ namespace TestCases
             }
         }
 
-        public async Task SendTestCaseResults(TestResults results) 
+        public async Task SendTestCaseResults(TestResults results)
         {
             using (HttpClient _httpClient = new HttpClient())
             {
