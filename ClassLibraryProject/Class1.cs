@@ -8,5 +8,10 @@ namespace ClassLibraryProject
         {
             return val1 + val2;
         }
+
+        public int Multiply(int a, int b)
+        {
+            return a * b;
+        }
     }
 }

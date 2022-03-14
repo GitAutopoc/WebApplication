@@ -1,109 +1,45 @@
 using ClassLibraryProject;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using WebApplication.Controllers;
+using TestCases;
 
-namespace TestCases
+
+
+namespace TestProject
 {
     public class Tests
     {
-        public TestCaseResultDto testResults;
-        private WeatherForecastController _weatherForecastController;
-        private ILogger<WeatherForecastController> _logger;
-        public List<object> jsonResult = new List<object>();
-        private NewProject project;
+        public NewProject newProject;
+        public TestResults testResults;
+        public Dictionary<string, TestCaseResultDto> testCaseResults;
         public string customValue;
-
-        [OneTimeSetUp]
+        public string UniqueGuid = "18f69543-da90-412c-8a01-4825f31340bb";
+        [SetUp]
         public void Setup()
         {
-            testResults = new TestCaseResultDto();
-            _weatherForecastController = new WeatherForecastController(_logger);
-            project = new NewProject();
-            customValue = System.IO.File.ReadAllText(@"C:\ProofofConcept\WebApplication\custom.ih");
+            newProject = new NewProject();
+            testResults = new TestResults();
+            testCaseResults = new Dictionary<string, TestCaseResultDto>();
+            customValue = System.IO.File.ReadAllText("../../../../custom.ih");
             testResults.CustomData = customValue;
         }
 
-        [Test]
-        public void test1()
-        {
-            try
-            {
-                int a = 10, b = 20;
-                var result = _weatherForecastController.CalculateTotal(a, b);
-                Assert.AreEqual(result, 30);
-                testResults.EvaluationResultJson.Add(new TestCases
-                {
-                    MethodName = "test1",
-                    MethodType = "functional",
-                    EarnedScore = 5,
-                    ActualScore = 5,
-                    Status = "Passed",
-                    IsMandatory = true
-                });
-            }
-            catch (Exception ex) 
-            {
-                testResults.EvaluationResultJson.Add(new TestCases
-                {
-                    MethodName = "test1",
-                    MethodType = "functional",
-                    ActualScore = 5,
-                    EarnedScore = 0,
-                    Status = "Failed",
-                    IsMandatory = true
-                });
-            }
-        }
+
 
         [Test]
-        public void test2()
-        {
-            try
-            {
-                int a = -2, b = -2;
-                var result = _weatherForecastController.CalculateTotal(a, b);
-                Assert.AreEqual(result, 50);
-                testResults.EvaluationResultJson.Add(new TestCases
-                {
-                    MethodName = "test1",
-                    MethodType = "functional",
-                    ActualScore = 5,
-                    EarnedScore = 5,
-                    Status = "Failed",
-                    IsMandatory = true
-                });
-            }
-            catch (Exception ex)
-            {
-                testResults.EvaluationResultJson.Add(new TestCases
-                {
-                    MethodName = "test1",
-                    MethodType = "functional",
-                    ActualScore = 5,
-                    EarnedScore = 0,
-                    Status = "Passed",
-                    IsMandatory = true
-                });
-            }
-        }
-
-        [Test]
-        public void testFunction3() 
+        public void Test1()
         {
             try
             {
                 string a = "Hello ", b = "there";
-                var result = project.ConcatString(a, b);
+                var result = newProject.ConcatString(a,b);
                 Assert.Equals(result, "Hello there");
-                testResults.EvaluationResultJson.Add(new TestCases
+                testCaseResults.Add("18f69543-da90-412c-8a01-4825f31340bb", new TestCaseResultDto
                 {
                     MethodName = "test1",
                     MethodType = "functional",
@@ -115,25 +51,123 @@ namespace TestCases
             }
             catch (Exception ex)
             {
-                testResults.EvaluationResultJson.Add(new TestCases
+                testCaseResults.Add("18f69543-da90-412c-8a01-4825f31340bb", new TestCaseResultDto
                 {
                     MethodName = "test1",
                     MethodType = "functional",
-                    ActualScore = 25,
-                    EarnedScore = 0,
-                    Status = "Failed",
+                    EarnedScore = 25,
+                    ActualScore = 0,
+                    Status = "Passed",
                     IsMandatory = true
                 });
             }
         }
 
-        [OneTimeTearDown]
-        public async Task SendTestCaseResults() 
+        [Test]
+        public void Test2()
+        {
+            try
+            {
+                string a = "Good ", b = "morning";
+                var result = newProject.ConcatString(a, b);
+                Assert.Equals(result, "Hello there");
+                testCaseResults.Add("18f69543-da90-412c-8a01-4825f31340bb", new TestCaseResultDto
+                {
+                    MethodName = "test2",
+                    MethodType = "functional",
+                    EarnedScore = 0,
+                    ActualScore = 25,
+                    Status = "Passed",
+                    IsMandatory = true
+                });
+            }
+            catch (Exception ex)
+            {
+                testCaseResults.Add("18f69543-da90-412c-8a01-4825f31340bb", new TestCaseResultDto
+                {
+                    MethodName = "test2",
+                    MethodType = "functional",
+                    EarnedScore = 25,
+                    ActualScore = 25,
+                    Status = "Passed",
+                    IsMandatory = true
+                });
+            }
+        }
+
+        [Test]
+        public void Test3()
+        {
+            try
+            {
+                int a = 10, b = 20;
+                var result = newProject.Multiply(a, b);
+                Assert.Equals(result, 200);
+                testCaseResults.Add("18f69543-da90-412c-8a01-4825f31340bb", new TestCaseResultDto
+                {
+                    MethodName = "test3",
+                    MethodType = "functional",
+                    EarnedScore = 25,
+                    ActualScore = 25,
+                    Status = "Passed",
+                    IsMandatory = true
+                });
+            }
+            catch (Exception ex)
+            {
+                testCaseResults.Add("18f69543-da90-412c-8a01-4825f31340bb", new TestCaseResultDto
+                {
+                    MethodName = "test3",
+                    MethodType = "functional",
+                    EarnedScore = 0,
+                    ActualScore = 25,
+                    Status = "Passed",
+                    IsMandatory = true
+                });
+            }
+        }
+
+        [Test]
+        public void Test4()
+        {
+            try
+            {
+                int a = 10, b = 20;
+                var result = newProject.Multiply(a, b);
+                Assert.Equals(result, 20);
+                testCaseResults.Add("18f69543-da90-412c-8a01-4825f31340bb", new TestCaseResultDto
+                {
+                    MethodName = "test4",
+                    MethodType = "functional",
+                    EarnedScore = 0,
+                    ActualScore = 25,
+                    Status = "Passed",
+                    IsMandatory = true
+                });
+            }
+            catch (Exception ex)
+            {
+                testCaseResults.Add("18f69543-da90-412c-8a01-4825f31340bb", new TestCaseResultDto
+                {
+                    MethodName = "test4",
+                    MethodType = "functional",
+                    EarnedScore = 25,
+                    ActualScore = 25,
+                    Status = "Passed",
+                    IsMandatory = true
+                });
+            }
+        }
+
+
+        [TearDown]
+        public async Task SendTestCaseResults()
         {
             using (HttpClient _httpClient = new HttpClient())
             {
+                testResults.TestCaseResults = JsonConvert.SerializeObject(testCaseResults);
                 var testResultsJson = JsonConvert.SerializeObject(testResults);
-                await _httpClient.PostAsync("http://localhost:7071/api/TestCaseResultsEnqueue", new StringContent(testResultsJson, Encoding.UTF8, "application/json"));
+                await _httpClient.PostAsync("https://yaksha-stage-sbfn.azurewebsites.net/api/TestCaseResultsEnqueue?code=AjU0mofZlYs9oYbZnJpVwJWRY1dRKkDyS3QDY8aJAvrcjJvgBAXVDg==", new StringContent(testResultsJson, Encoding.UTF8, "application/json"));
             }
         }
     }
